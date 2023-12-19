@@ -1,0 +1,42 @@
+@use '../../styles/config/mixins' as *;
+
+.container {
+  //...
+  
+  .title {
+    position: relative;
+    display: inline-block;
+    font-size: 3.75rem;
+    font-weight: 900;
+    
+    &::before {
+      content: url('/img/title-arc.svg');
+      position: absolute;
+      top: 65%;
+      left: -2rem;
+      transform: translateY(-50%);
+    } 
+  }
+
+  &.white .title {
+    color: var(--white);
+  }
+
+  &.centered {
+    text-align: center;
+  }
+}
+
+@include mobile {
+  .container {
+    .title {
+      font-size: 2.25rem;
+  
+      &::before {
+        content: url('/img/title-arc_mobile.svg');
+        top: 60%;
+        left: -1.8rem;
+      }
+    }
+  }
+}

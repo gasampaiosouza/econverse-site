@@ -1,0 +1,370 @@
+@use '../../../styles/config/mixins' as *;
+
+.cases {
+  --background: linear-gradient(
+    191.03deg,
+    var(--purple-800) 46.14%,
+    black 94.31%
+  );
+
+  padding-bottom: 4.5rem;
+  position: relative;
+  background: var(--background);
+  overflow: hidden;
+
+  .slide-content {
+    display: none;
+    text-align: start;
+    margin: 6.25rem 0 4.5rem;
+    color: var(--white);
+
+    a {
+      display: flex;
+      align-items: center;
+      color: var(--white);
+      font-weight: 600;
+
+      &:hover {
+        .cta-arrow {
+          transform: translateX(3px);
+        }
+      }
+
+      .cta-arrow {
+        transition: .2s ease-in-out;
+        margin-left: 1.25rem;
+      }
+    }
+
+    p {
+      width: 26.5rem;
+      margin: 2.5rem 0 1.5rem;
+      font-weight: 300;
+    }
+
+    &.active {
+      display: block;
+    }
+  }
+
+  .cases-slider {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: var(--default-margin);
+    padding-right: 0;
+
+    &__content {
+      width: 500px;
+    }
+  }
+
+  .slide-banner {
+    position: relative;
+    top: -5rem;
+    z-index: 2;
+
+    // &::after {
+    //   content: '';
+    //   position: absolute;
+
+    //   // prevent it to show a strange border
+    //   top: -2px;
+    //   left: -2px;
+    //   right: -1px;
+    //   bottom: 0;
+
+    //   background: rgba(#2c1e4a, 0.6);
+    // }
+
+    &::after,
+    img {
+      mask-image: url(/img/cases-mask.png);
+      mask-size: 100%;
+      mask-mode: alpha;
+      mask-repeat: no-repeat;
+
+      @include tablet {
+        mask-size: 45%;
+      }
+    }
+
+    .image {
+      // need it
+      width: 740px;
+      display: none !important;
+
+      &.active {
+        display: block !important;
+      }
+    }
+
+    .top-dots,
+    .bottom-dots {
+      position: absolute;
+    }
+
+    .top-dots {
+      top: 4.875rem;
+      right: 50%;
+      transform: translateX(5%);
+      z-index: -1;
+    }
+
+    .bottom-dots {
+      right: 0;
+      bottom: 1.25rem;
+      z-index: 3;
+    }
+  }
+
+  .divider-dots {
+    position: absolute;
+
+    // negative number, damn useless css variables :[
+    left: calc(var(--default-margin) - var(--default-margin) * 2);
+    bottom: -1.8rem;
+  }
+
+  .arrows {
+    $arrow-size: 3rem;
+
+    display: flex;
+
+    button {
+      cursor: pointer;
+
+      background: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      border: 2px solid var(--white);
+      border-radius: 50%;
+      width: $arrow-size;
+      height: $arrow-size;
+
+      &,
+      svg path {
+        transition: 0.2s ease-in-out;
+      }
+
+      &:hover {
+        background: var(--white);
+
+        svg path {
+          fill: var(--purple-800);
+        }
+      }
+
+      &:last-child {
+        margin-left: 2.5rem;
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+.what-we-do {
+  margin-top: 6.25rem;
+  text-align: center;
+
+  h1 {
+    color: var(--white);
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 3.75rem;
+
+    .box {
+      color: var(--white);
+      max-width: 28.5rem;
+
+      h2 {
+        font-size: 1.5rem;
+        color: var(--white);
+        margin: 0.5rem 0 1rem;
+      }
+
+      p {
+        font-size: 0.875rem; // 14px
+      }
+    }
+  }
+
+  .cards {
+    display: grid;
+    align-items: flex-start;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0 1.2rem;
+    margin-top: 5rem;
+    padding: 0 10vw;
+
+    .card {
+      background: var(--white);
+      border-radius: 1rem;
+      overflow: hidden;
+
+      header {
+        padding: 2.5rem 1.5rem 2.5rem 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .plus {
+          $size: 3rem;
+
+          cursor: pointer;
+          width: $size;
+          height: $size;
+          background: rgba(var(--purple-300-rgb), .2);
+          border-radius: 50%;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: background .2s ease-in-out;
+
+          &:hover {
+            background: rgba(var(--purple-300-rgb), .15);
+          }
+        }
+      }
+
+      &-content {
+        padding: 0 3rem;
+
+        p {
+          width: 80%;
+          text-align: start;
+          font-size: 0.8rem;
+          font-weight: 500;
+        }
+
+        a {
+          display: flex;
+          align-items: center;
+
+          padding-bottom: 2.5rem;
+          margin-top: 1rem;
+
+          font-weight: 600;
+          text-align: start;
+          transition: .2s ease-in-out;
+
+          &:hover {
+            &,
+            .cta-arrow {
+              color: var(--purple-400);
+            }
+
+            .cta-arrow {
+              transform: translateX(3px);
+            }
+          }
+
+          .cta-arrow {
+            margin-left: 1.1rem;
+            transition: .2s ease-in-out;
+
+            path {
+              fill: var(--purple-800);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include tablet {
+  .cases {
+    .top-dots {
+      right: 0;
+    }
+
+    .divider-dots {
+      display: none;
+    }
+
+    .slide-content {
+      margin: 12.5rem 0 4.5rem;
+    }
+
+    .slide-banner {
+      position: absolute;
+      right: -15%;
+      top: -3rem;
+
+      .image {
+        width: 60vw;
+      }
+    }
+  }
+
+  .cards {
+    display: flex !important;
+    flex-direction: column;
+    margin-top: 2.5rem !important;
+    margin-bottom: 1.5rem;
+
+    .card {
+      width: 100%;
+      margin-bottom: 1.5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+@include mobile {
+  .cases {
+    .slide-banner {
+      .image {
+        width: 63vw;
+      }
+    }
+
+    .slide-content {
+      p {
+        width: 90vw;
+      }
+    }
+
+    .top-dots.mobile {
+      right: 25%;
+    }
+
+    .divider-dots {
+      display: block;
+      right: -5.5rem;
+      left: inherit;
+      transform: rotate(180deg);
+    }
+
+    .default-title h1 {
+      left: 1.5rem;
+      top: 1.5rem;
+    }
+  }
+
+  .content {
+
+    .box {
+      max-width: 100% !important;
+      line-height: 1.9;
+      margin-bottom: 2.25rem;
+
+      p {
+        width: 85vw;
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+// FADE IN
+$animation-position: 100px;
+
+@keyframes fade-in {
+  from { transform: translateX($animation-position); opacity: 0; }
+
+  to { opacity: 1; }
+}
+
+@-webkit-keyframes fade-in {
+  from { transform: translateX($animation-position); opacity: 0; }
+
+  to { opacity: 1; }
+}
+
+@-moz-keyframes fade-in {
+  from { transform: translateX($animation-position); opacity: 0; }
+
+  to { opacity: 1; }
+}
+
+// FADE
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@-webkit-keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@-moz-keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+// FADE BACK
+@keyframes fade-back {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(-150px);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes fade-back {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(-150px);
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes fade-back {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(-150px);
+    opacity: 0;
+  }
+}

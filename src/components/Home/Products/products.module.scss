@@ -1,0 +1,147 @@
+@use '../../../styles/config/mixins' as *;
+
+.products {
+  //...
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    @include desktop-small {
+      grid-template-columns: 1fr;
+    }
+
+    gap: 1.5rem;
+    margin-top: 5rem;
+
+    .card {
+      $bg: #f9f9f9;
+
+      display: flex;
+      padding: 2rem 2.5rem 2rem 1.5rem;
+      background: rgba($bg, 0.8);
+      border-radius: 0.5rem;
+      border: 1px solid rgba(#c6c6c6, 0.4);
+
+      .image {
+        position: relative;
+        display: flex;
+        min-width: 15.8rem;
+        height: auto;
+
+        > div {
+          margin: 0 auto !important;
+        }
+
+        &::after {
+          content: '';
+          background: var(--purple-800);
+          opacity: 0.25;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          border-radius: 0.5rem;
+        }
+      }
+
+      .content {
+        margin-left: 2.6rem;
+
+        h2 {
+          color: var(--purple-500);
+          font-weight: 900;
+          font-size: 1.4rem;
+          text-align: start;
+        }
+
+        p,
+        a {
+          font-size: 0.875rem;
+        }
+
+        p {
+          user-select: none;
+          text-align: justify;
+          margin: 1rem 0 1.5rem;
+          position: relative;
+          overflow: hidden;
+          height: 4.8em;
+
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 1.2em;
+            background: linear-gradient(to right, rgba(255,255,255, 0) 25%, $bg 85%);
+          }
+
+          strong {
+            color: var(--purple-500);
+            font-weight: 600;
+          }
+        }
+
+        a {
+          display: flex;
+          align-items: center;
+          font-weight: 600;
+
+          &:hover {
+            //...
+
+            .cta-arrow {
+              transform: translateX(3px);
+
+              path {
+                fill: var(--purple-300);
+              }
+            }
+          }
+
+          .cta-arrow {
+            margin-left: 0.75rem;
+            transition: 0.2s ease-in-out;
+
+            path {
+              fill: var(--purple-800);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include mobile {
+  .products {
+
+    .content {
+      margin-left: 0 !important;
+
+      a {
+        font-size: 1rem !important;
+      }
+    }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0;
+
+      .card {
+        width: 80vw;
+        flex-direction: column;
+        margin: 0 auto 1.5rem;
+  
+        .image {
+          margin-bottom: 2rem;
+        }
+      }
+    }
+  }
+}

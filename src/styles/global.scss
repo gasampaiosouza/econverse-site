@@ -1,0 +1,88 @@
+@use './config/variables' as *;
+@use './config/components' as *;
+@use './config/mixins' as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+
+  // enable outline only when tabbing (for keyboard users)
+  &:focus:not(:focus-visible) {
+    outline: none !important;
+  }
+
+  &:focus {
+    outline: 1px solid var(--yellow-800);
+  }
+}
+
+body {
+  overflow-x: hidden;
+}
+
+body,
+input,
+a,
+textarea,
+button {
+  font: 500 1rem var(--font), sans-serif;
+  color: var(--text-color);
+}
+
+a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+@include tablet {
+  html {
+    font-size: 93.75%; // 15px
+  }
+}
+
+@include mobile {
+  html {
+    font-size: 93.75%; // 15px
+  }
+
+  body {
+    --default-margin: 1.5rem;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  font-family: var(--font), sans-serif;
+  color: var(--text-color);
+}
+
+p {
+  line-height: 1.7;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+.slick-list {
+  padding: 25px 0px !important;
+}
+
+.slick-active {
+  opacity: 1 !important;
+}

@@ -1,0 +1,49 @@
+@use './mixins' as *;
+
+// DECLARING DEFAULT VARIABLES
+$text-color: #2c1e4a;
+$white: #fff;
+
+$purple-800: #2c1e4a;
+$purple-500: #37265d;
+$purple-400: #483179;
+$purple-300: #583c95;
+
+$yellow-800: #e7cd1f;
+$yellow-500: #efdd66;
+$yellow-400: #f2e589;
+$yellow-300: #f6edad;
+
+$error: #e71f39;
+
+// CSS VARIABLES
+:root {
+  --font: Poppins, sans-serif;
+  --text-color: #{$text-color};
+  --white: #{$white};
+
+  --purple-800: #{$purple-800};
+  --purple-800-rgb: #{hexToRGB($purple-800)};
+  --purple-500: #{$purple-500};
+  --purple-500-rgb: #{hexToRGB($purple-500)};
+  --purple-400: #{$purple-400};
+  --purple-400-rgb: #{hexToRGB($purple-400)};
+  --purple-300: #{$purple-300};
+  --purple-300-rgb: #{hexToRGB($purple-300)};
+
+  --yellow-800: #{$yellow-800};
+  --yellow-800-rgb: #{hexToRGB($yellow-800)};
+  --yellow-500: #{$yellow-500};
+  --yellow-500-rgb: #{hexToRGB($yellow-500)};
+  --yellow-400: #{$yellow-400};
+  --yellow-400-rgb: #{hexToRGB($yellow-400)};
+  --yellow-300: #{$yellow-300};
+  --yellow-300-rgb: #{hexToRGB($yellow-300)};
+
+  --error: #{$error};
+  --error-rgb: #{hexToRGB($error)};
+
+  // measures
+  --default-margin: 4rem;
+  --header-height: 7.5rem;
+}

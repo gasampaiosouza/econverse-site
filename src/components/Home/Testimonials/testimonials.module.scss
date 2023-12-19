@@ -1,0 +1,127 @@
+@use '../../../styles/config/mixins' as *;
+
+.testimonials {
+  $default-background: #f9f9f9;
+
+  position: relative;
+  margin-top: 6.25rem;
+  padding: 3rem;
+  text-align: center;
+  overflow: hidden;
+  background: $default-background;
+
+  .slide-content {
+    text-align: center;
+    margin: 3rem auto;
+    width: 44rem !important;
+
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .slider-next,
+  .slider-prev {
+    position: absolute;
+    top: 50%;
+    border: 0;
+    background: 0;
+    
+    svg {
+      fill: $default-background;
+      transition: 0.2s ease-in-out;
+
+      &:hover {
+        filter: drop-shadow(0 0 5px rgba(var(--purple-800-rgb), 0.3));
+      }
+    }
+  }
+
+  .slider-next {
+    right: 4rem;
+    transform: translateY(-50%);
+  }
+
+  .slider-prev {
+    left: 4rem;
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+  .top-dots,
+  .bottom-dots {
+    position: absolute;
+  }
+
+  $dots-distance: 1.2rem;
+
+  .top-dots {
+    top: $dots-distance;
+    left: $dots-distance;
+  }
+
+  .bottom-dots {
+    bottom: $dots-distance;
+    right: $dots-distance;
+  }
+}
+
+.customers-slide {
+  width: 30rem;
+  margin: 0 auto;
+}
+
+.progress {
+  width: 120px !important;
+
+  .image-container {
+    display: flex;
+    justify-content: center;align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .image {
+    border-radius: 50%;
+  }
+}
+
+@include mobile {
+  .testimonials {
+    margin-top: 3.5rem;
+    padding: 6rem 0 4rem;
+
+    .slide-content {
+      width: 60vw !important;
+      font-size: 1.1rem;
+    }
+
+    .top-dots {
+      left: 0;
+    }
+
+    .slider-prev.mobile {
+      top: 40%;
+      left: 2rem;
+      min-height: 35px;
+    }
+
+    .slider-next.mobile {
+      top: 40%;
+      right: 2rem;
+      min-height: 35px;
+    }
+
+    .bottom-dots {
+      bottom: 1rem;
+      right: 0;
+      transform: rotate(180deg);
+    }
+  }
+
+  .customers-slide {
+    width: 90vw;
+  }
+
+  .progress {
+    width: 100px !important;
+  }
+}

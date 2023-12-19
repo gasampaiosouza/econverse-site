@@ -1,0 +1,68 @@
+@use '../../../styles/config/mixins' as *;
+
+.customers {
+  margin-top: 6rem;
+
+  // adds automatic offset to anchor tag hash change
+  &::before {
+    content: ' ';
+    display: block;
+    margin-top: -150px;
+    height: 150px;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 180px);
+
+    align-items: center;
+    justify-items: center;
+
+    max-width: 90rem;
+    margin: 5rem auto 0;
+    justify-content: center;
+    gap: 4.8rem 6.25rem;
+
+    .logo {
+      width: 7.8rem;
+      opacity: 0.5;
+      transition: .2s ease-in-out;
+
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+  }
+
+  .more {
+    display: block;
+    text-align: center;
+    margin-top: 4.6rem;
+    text-decoration: underline;
+    text-transform: uppercase;
+  }
+}
+
+@include tablet {
+  .customers {
+    .list {
+      padding: 0 1rem;
+    }
+  }
+}
+
+@include mobile {
+  .customers {
+    margin: 6.25rem auto var(--default-margin) !important;
+
+    .list {
+      text-align: center;
+      
+      a {
+        width: auto !important;
+      }
+    }
+  }
+}

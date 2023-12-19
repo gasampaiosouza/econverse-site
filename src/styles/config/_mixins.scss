@@ -1,0 +1,36 @@
+@function hexToRGB($hex) {
+  @return red($hex), green($hex), blue($hex);
+}
+
+@mixin cascade-animation($selector, $quantity, $animation-time: 100) {
+  @for $i from 1 through $quantity {
+    #{$selector} {
+      animation: fade-in .75s ease-in-out;
+      animation-fill-mode: both;
+      animation-duration: .5s;
+
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * $animation-time}ms;
+      }
+    }
+  }
+}
+
+// RESPONSIVE
+@mixin desktop-small() {
+  @media only screen and (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin tablet() {
+  @media only screen and (max-width: 1080px) {
+    @content;
+  }
+}
+
+@mixin mobile() {
+  @media only screen and (max-width: 720px) {
+    @content;
+  }
+}

@@ -1,0 +1,133 @@
+@use '../../../styles/config/mixins' as *;
+
+.hero {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+
+	&-content {
+		padding: 2.5rem 0 0 var(--default-margin);
+
+		h1 {
+			font-size: 3.5rem;
+			margin-bottom: 1rem;
+			font-weight: 500;
+		}
+
+		p {
+			font-size: 1.125rem;
+			margin-bottom: 2.5rem;
+			max-width: 27.75rem;
+		}
+
+		.buttons {
+			display: flex;
+			align-items: center;
+
+			.explore {
+				display: block;
+				margin-left: 2.5rem;
+			}
+		}
+
+		.customers {
+			display: flex;
+			margin-top: 4.6rem;
+			gap: 5vw;
+			overflow: visible;
+			align-items: center;
+
+			svg {
+				overflow: visible;
+				z-index: 1;
+			}
+		}
+	}
+
+	&-banner {
+		img {
+			position: relative;
+			top: 7px;
+
+			@include tablet {
+				width: 100%;
+				height: auto;
+			}
+		}
+
+		> div {
+			height: 100%;
+		}
+	}
+}
+
+@include tablet {
+	.hero {
+		align-items: center;
+		flex-direction: column;
+
+		.customers {
+			gap: 0;
+			justify-content: center;
+
+			svg {
+				margin-right: 2rem;
+			}
+		}
+
+		&-content {
+			width: 100%;
+			text-align: center;
+			padding: 2.5rem 0 0;
+
+			p {
+				max-width: 90vw;
+				margin: 0 auto;
+			}
+
+			.buttons {
+				justify-content: center;
+				margin-top: 3rem;
+			}
+		}
+
+		&-banner {
+			display: flex;
+			margin-top: 2.5rem;
+			text-align: center;
+		}
+	}
+}
+
+@include mobile {
+	.hero {
+		&-content {
+			text-align: start;
+			padding: 2.5rem 0 0 calc(var(--default-margin) / 1.25);
+
+			h1 {
+				font-size: 2.6rem;
+			}
+
+			p {
+				font-size: 1rem;
+				margin: 0;
+			}
+
+			.buttons {
+				justify-content: flex-start;
+
+				.button,
+				.explore {
+					font-size: 0.9rem;
+				}
+			}
+		}
+
+		.customers {
+			overflow-x: auto;
+			justify-content: space-between;
+			// padding-right: 3rem;
+		}
+	}
+}

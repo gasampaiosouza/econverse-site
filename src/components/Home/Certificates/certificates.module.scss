@@ -1,0 +1,100 @@
+@use '../../../styles/config/mixins' as *;
+
+.certificates {
+  //...
+
+  .container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 62rem;
+    margin: 4rem auto 0;
+    padding-left: 1.125rem;
+    background: var(--purple-800);
+    border-radius: 1rem;
+
+    .horizontal-title {
+      writing-mode: tb-rl;
+      font-size: 2.4rem;
+      text-transform: uppercase;
+      color: var(--white);
+      opacity: 0.05;
+    }
+
+    .box {
+      display: grid;
+      grid-template-rows: 67px 1fr 1fr;
+      align-items: center;
+
+      img {
+        height: 3.5rem;
+      }
+
+      &.shopify h3 {
+        margin-top: 2.0625rem;
+      }
+
+      &.vtex h3 {
+        margin-top: 2.9375rem;
+      }
+
+      h3 {
+        color: var(--white);
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        max-width: 14rem;
+        color: var(--white);
+      }
+    }
+
+    // hide weird but necessary mask
+    svg {
+      mask {
+        display: none;
+      }
+    }
+  }
+}
+
+@include mobile {
+  .certificates {
+    .container {
+      padding: 4rem 0;
+      overflow: hidden;
+      flex-direction: column;
+
+      .box.vtex {
+        margin-bottom: 5rem;
+      }
+
+      .dots {
+        position: absolute;
+        right: -2.75rem;
+        bottom: 0;
+      }
+    }
+
+    .horizontal-title {
+      position: absolute;
+      top: 1rem;
+      font-size: 2.25rem;
+      left: 0.5rem;
+    }
+
+    .box {
+      text-align: center;
+      justify-items: center;
+
+      h3 {
+        font-size: 1.75rem;
+      }
+
+      p {
+        font-size: 1.15rem;
+      }
+    }
+  }
+}

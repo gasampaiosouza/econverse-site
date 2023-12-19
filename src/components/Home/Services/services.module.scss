@@ -1,0 +1,148 @@
+@use '../../../styles/config/mixins' as *;
+
+.services {
+  text-align: center;
+
+  > p {
+    width: 40rem;
+    margin: 4rem auto 3.5rem;
+  }
+
+  .box {
+    padding: 1rem;
+    width: 10rem !important;
+    box-shadow: 2px 2px 15px rgba(black, 0.08);
+
+    .icon {
+      $size: 66px;
+
+      margin: 0 auto;
+      display: grid;
+      place-items: center;
+      width: $size;
+      height: $size;
+      padding: 0.5rem;
+      background: #d5d2db;
+      border-radius: 50%;
+    }
+
+    .title {
+      margin: 0 auto;
+      font-size: 0.875rem;
+      line-height: 1.6;
+      width: 6rem;
+      margin-top: 1rem;
+      font-weight: 400;
+    }
+  }
+
+  .slider {
+    $slider-width: 47rem;
+
+    width: $slider-width;
+    margin: 0 auto;
+
+    &-control {
+      position: relative;
+
+      width: $slider-width;
+      margin: 2.5rem auto 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-weight: 900;
+      font-size: 1.8rem;
+
+      .counter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        span {
+          opacity: 0.5;
+          margin-left: 0.5rem;
+          font-weight: 500;
+          font-size: 1rem;
+          margin-top: 0.25rem;
+        }
+      }
+    }
+
+    &-next,
+    &-prev {
+      $size: 25px;
+
+      position: absolute;
+      top: 50%;
+      cursor: pointer;
+      width: $size;
+      height: $size;
+      margin: 0 0.875rem;
+      background: 0;
+      border: 0;
+
+      svg {
+        fill: var(--white);
+        transition: 0.2s ease-in-out;
+
+        &:hover {
+          filter: drop-shadow(0 0 5px rgba(var(--purple-800-rgb), 0.3));
+        }
+      }
+    }
+
+    &-next {
+      transform: translateY(-50%);
+      right: 37%;
+    }
+
+    &-prev {
+      transform: rotate(180deg) translateY(50%);
+      left: 37%;
+    }
+  }
+
+  .more {
+    display: block;
+    text-decoration: underline;
+  }
+}
+
+@include tablet {
+  .services {
+    p {
+      width: 90vw;
+    }
+  }
+}
+
+@include mobile {
+  .services {
+    p {
+      margin: 3rem auto;
+    }
+
+    .slider {
+      width: 90vw;
+
+      &-control {
+        width: 90vw;
+      }
+
+      &-next {
+        right: 21vw;
+      }
+
+      &-prev {
+        left: 21vw;
+      }
+    }
+  }
+}
+
+// opacity: 0.5;
+//     margin-left: 0.5rem;
+//     font-weight: 500;
+//     font-size: 1rem;
+//     margin-top: 0.25rem;

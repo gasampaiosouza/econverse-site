@@ -1,0 +1,210 @@
+@use '../../styles/config/mixins' as *;
+
+.products-boilerplate {
+	$default-width: 90vw;
+
+	position: relative;
+	text-align: center;
+	overflow-x: hidden;
+
+	.title {
+		font-size: 3rem;
+		margin-bottom: 4.625rem;
+		font-weight: 900;
+	}
+
+	.top-dots {
+		position: absolute;
+		left: 0;
+		top: 60px;
+		transform: rotate(90deg) translateY(100%);
+	}
+
+	.bottom-dots {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		transform: rotate(-90deg) translateY(200%);
+	}
+
+	.content {
+		position: relative;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		width: $default-width;
+		margin: 0 auto;
+	}
+
+	.slider-section {
+		width: 50vw;
+
+		.pagination-images {
+			display: flex !important;
+			width: 35rem;
+			justify-content: center;
+			align-items: center;
+			margin: 0 auto;
+			list-style: none;
+			margin-top: 2rem;
+
+			li {
+				margin-right: 2rem;
+				opacity: 0.25;
+				transition: 0.2s ease-in-out;
+			}
+		}
+	}
+
+	.description-section {
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		text-align: start;
+
+		.availability {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			margin-bottom: 2.125rem;
+			max-width: 30rem;
+
+			h3 {
+				font-size: 1.5rem;
+				margin-right: 1rem;
+			}
+
+			svg {
+				width: auto;
+				height: 1.5rem;
+				margin: 0 1rem;
+			}
+		}
+
+		.description {
+			margin-bottom: 1.5rem;
+			font-size: 1rem;
+			max-width: 35rem;
+		}
+
+		.more {
+			text-transform: uppercase;
+			text-decoration: underline;
+		}
+
+		.budget {
+			margin-top: 3.8rem;
+			background: var(--yellow-800);
+			text-transform: uppercase;
+			width: 50%;
+			min-width: 18rem;
+
+			&:hover {
+				background: var(--yellow-500);
+			}
+		}
+	}
+
+	.additional-content {
+		width: $default-width;
+		margin: 0 auto;
+		margin-top: 5.625rem;
+	}
+}
+
+@include tablet {
+	.products-boilerplate {
+		.content {
+			display: flex;
+			flex-direction: column;
+			grid-template-columns: none;
+		}
+
+		.slider-section {
+			width: auto;
+
+			.pagination-images {
+				width: 75vw;
+			}
+		}
+
+		.description-section {
+			text-align: center;
+			align-items: center;
+
+			.availability {
+				margin: 2.5rem 0 1.5rem !important;
+			}
+		}
+	}
+}
+
+.mainImage {
+	max-width: 468px;
+	height: auto;
+}
+
+.thumbnail {
+	max-width: 150px;
+	height: auto;
+}
+
+@include mobile {
+	.thumbnail {
+		max-width: 100px;
+	}
+
+	.products-boilerplate {
+		.title {
+			font-size: 2.25rem;
+			padding: 0 4rem;
+		}
+
+		.top-dots {
+			left: 0;
+			transform: rotate(0);
+			top: 0;
+		}
+
+		.bottom-dots {
+			right: 0;
+			transform: scaleX(-1);
+			top: 0;
+		}
+
+		.slider-section {
+			.pagination-images {
+				width: 100vw;
+				margin-top: 1rem;
+			}
+		}
+
+		.description-section {
+			.availability {
+				display: flex;
+				justify-content: space-between;
+
+				h3 {
+					font-size: 1.1rem;
+					font-weight: 900;
+				}
+
+				svg {
+					margin: 0;
+				}
+			}
+
+			.more {
+				width: 100%;
+			}
+		}
+
+		.budget {
+			width: 100% !important;
+			margin-top: 2rem !important;
+		}
+
+		.additional-content {
+			margin: 3rem auto 6rem;
+		}
+	}
+}
