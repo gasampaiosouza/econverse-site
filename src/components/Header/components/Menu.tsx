@@ -13,7 +13,9 @@ const Menu: React.FC = () => {
 	const { t } = useTranslation()
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-	const getPathname = () => {
+	const currentPathname = useRouter().pathname
+
+	const usePathname = () => {
 		if (typeof window !== 'undefined') {
 			// FIXME: can broken if any other language is added
 			const parsedPathnameLocale = window.location.pathname.replace(
@@ -24,10 +26,10 @@ const Menu: React.FC = () => {
 			return parsedPathnameLocale
 		}
 
-		return useRouter().pathname
+		return currentPathname
 	}
 
-	const pathname = getPathname()
+	const pathname = usePathname()
 	const hasPathname = pathname != '/'
 	const URL = hasPathname ? pathname : '/'
 
@@ -86,7 +88,7 @@ const Menu: React.FC = () => {
 							href={link.href}
 							key={`link-${index}`}
 						>
-							{link.label || t[link.labelKey]}
+							{link.label || t[link.labelKey as keyof typeof t]}
 						</Link>
 					))}
 

@@ -4,12 +4,12 @@ import { useTranslation } from 'src/hooks/useTranslation'
 import SVG from 'react-inlinesvg'
 
 import styles from '../cases.module.scss'
-import { getContent } from '../Content'
+import { useCasesContent } from '../Content'
 import { useCycle, motion } from 'framer-motion'
 import Link from 'next/link'
 
 export const WhatWeDo = () => {
-	const { cards } = getContent()
+	const { cards } = useCasesContent()
 	const { t } = useTranslation()
 
 	interface ICard {

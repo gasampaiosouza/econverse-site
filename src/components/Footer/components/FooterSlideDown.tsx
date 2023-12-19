@@ -5,6 +5,7 @@ import { ContentTitle } from './FooterContentBlock'
 
 interface Props {
 	title: string
+	children: React.ReactNode
 }
 
 export const FooterSlideDown: React.FC<Props> = ({ title, children }) => {
@@ -16,6 +17,7 @@ export const FooterSlideDown: React.FC<Props> = ({ title, children }) => {
 	return (
 		<motion.div className={styles['slide-down']} onTap={() => cycleHeight()}>
 			<header className={styles['slide-down_header']}>
+				{/* @ts-ignore */}
 				<ContentTitle>{title}</ContentTitle>
 
 				<motion.div

@@ -2,7 +2,7 @@ import SVG from 'react-inlinesvg';
 
 import { useTranslation } from '~/src/hooks/useTranslation'
 
-export function getContent() {
+export function useServicesContent() {
 	const { t } = useTranslation()
 
 	return [

@@ -5,12 +5,12 @@ import { Card } from './components/Card'
 import Title from 'components/Title'
 import styles from './products.module.scss'
 
-import { getContent } from './Content'
+import { useProductsContent } from './Content'
 
 const Products: React.FC = () => {
-	// render only 4 items
 	const cardsToShow = 4
-	const cards = getContent()
+
+	const cards = useProductsContent()
 	const { t } = useTranslation()
 
 	return (

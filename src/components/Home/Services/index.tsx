@@ -8,7 +8,7 @@ import styles from './services.module.scss'
 
 import Link from 'next/link'
 
-import { getContent } from './Content'
+import { useServicesContent } from './Content'
 
 import SVG from 'react-inlinesvg'
 
@@ -20,14 +20,13 @@ import { useResponsivity } from 'src/hooks/useResponsivity'
 import padNumberStart from 'helpers/padNumberStart'
 
 const Services: React.FC = () => {
-	// define slide quantity
 	const DESKTOP_SLIDES = 4
 	const MOBILE_SLIDES = 2
 
 	const { isMobile } = useResponsivity()
 	const [currentSlideIndex, setCurrentSlideIndex] = useState('01')
 	const { t } = useTranslation()
-	const services = getContent()
+	const services = useServicesContent()
 
 	const totalSlides = {
 		desktop: padNumberStart(Math.ceil(services.length / DESKTOP_SLIDES)),
@@ -79,6 +78,7 @@ const Services: React.FC = () => {
 			<div className={styles['slider-control']}>
 				<button
 					className={styles['slider-prev']}
+					// @ts-ignore
 					onClick={() => sliderRef.current.slickPrev()}
 				>
 					<SVG src="/icons/purple-slide-arrow.svg" />
@@ -91,6 +91,7 @@ const Services: React.FC = () => {
 
 				<button
 					className={styles['slider-next']}
+					// @ts-ignore
 					onClick={() => sliderRef.current.slickNext()}
 				>
 					<SVG src="/icons/purple-slide-arrow.svg" />

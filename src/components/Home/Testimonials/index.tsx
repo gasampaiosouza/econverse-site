@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import getId from 'helpers/generateUniqueID';
+import getId from 'helpers/generateUniqueID'
 
 // import Slider from 'components/Slider'
 import Title from 'components/Title'
@@ -9,7 +9,7 @@ import Image from 'next/image'
 import SVG from 'react-inlinesvg'
 
 import { useTranslation } from 'src/hooks/useTranslation'
-import { getContent } from './Content'
+import { useTestimonialsContent } from './Content'
 
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
@@ -25,17 +25,26 @@ import { useResponsivity } from 'src/hooks/useResponsivity'
 
 function Testimonials() {
 	const AUTOPLAY_TIMER = 7000
-	
+
 	const { t } = useTranslation()
-	const testimonials = getContent()
+	const testimonials = useTestimonialsContent()
 	const { isMobile } = useResponsivity()
 
 	const [timer, setTimer] = useState(0)
 	const [currentSlide, setCurrentSlide] = useState(0)
-	const [customerDescriptionRef, setCustomerDescriptionRef] = useState(null)
-	const [customerPictureRef, setCustomerPictureRef] = useState(null)
 
-	const DefaultCustomerImage = ({ slide }) => (
+	const [customerDescriptionRef, setCustomerDescriptionRef] =
+		useState<Slider | null>(null)
+
+	const [customerPictureRef, setCustomerPictureRef] = useState<Slider | null>(
+		null,
+	)
+
+	const DefaultCustomerImage = ({
+		slide,
+	}: {
+		slide: (typeof testimonials)[0]
+	}) => (
 		<div className={styles['image-container']}>
 			<Image
 				className={styles.image}
@@ -69,11 +78,15 @@ function Testimonials() {
 					) : (
 						<>
 							<SVG src="/img/purple-dots.svg" className={styles['top-dots']} />
-							<SVG src="/img/purple-dots.svg" className={styles['bottom-dots']} />
+							<SVG
+								src="/img/purple-dots.svg"
+								className={styles['bottom-dots']}
+							/>
 						</>
 					)}
 
 					<Slider
+						// @ts-ignore
 						asNavFor={customerPictureRef}
 						ref={(slider1) => setCustomerDescriptionRef(slider1)}
 						arrows={false}
@@ -96,7 +109,7 @@ function Testimonials() {
 										isCurrentSlide ? styles.active : ''
 									}`}
 								>
-									<p>"{slide.description}"</p>
+									<p>&quot;{slide.description}&quot;</p>
 
 									<span
 										dangerouslySetInnerHTML={{ __html: slide.customer.info }}
@@ -110,6 +123,7 @@ function Testimonials() {
 						className={`${styles['slider-prev']} ${
 							isMobile ? styles.mobile : ''
 						}`}
+						// @ts-ignore
 						onClick={() => customerDescriptionRef.slickPrev()}
 					>
 						{isMobile ? (
@@ -123,6 +137,7 @@ function Testimonials() {
 						className={`${styles['slider-next']} ${
 							isMobile ? styles.mobile : ''
 						}`}
+						// @ts-ignore
 						onClick={() => customerDescriptionRef.slickNext()}
 					>
 						{isMobile ? (
@@ -134,6 +149,7 @@ function Testimonials() {
 				</div>
 
 				<Slider
+					// @ts-ignore
 					asNavFor={customerDescriptionRef}
 					ref={(slider2) => setCustomerPictureRef(slider2)}
 					slidesToShow={3}
@@ -184,4 +200,4 @@ function Testimonials() {
 	)
 }
 
-export default Testimonials;
+export default Testimonials

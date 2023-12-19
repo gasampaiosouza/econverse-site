@@ -2,7 +2,7 @@ import { useTranslation } from '~/src/hooks/useTranslation'
 
 import SVG from 'react-inlinesvg'
 
-export function getContent() {
+export function useCasesContent() {
 	const { t } = useTranslation()
 
 	return {

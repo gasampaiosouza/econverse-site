@@ -1,10 +1,15 @@
 import { useState, useEffect } from 'react'
 
+type WindowSize = {
+	width: number | undefined
+	height: number | undefined
+}
+
 export function useResponsivity() {
 	const [windowSize, setWindowSize] = useState({
 		width: undefined,
 		height: undefined,
-	})
+	} as WindowSize)
 
 	useEffect(() => {
 		if (typeof window !== 'undefined') {
@@ -23,5 +28,5 @@ export function useResponsivity() {
 		}
 	}, [])
 
-	return { isMobile: windowSize.width < 800 }
+	return { isMobile: (windowSize?.width || 0) < 800 }
 }

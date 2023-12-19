@@ -1,6 +1,6 @@
 import { useTranslation } from '~/src/hooks/useTranslation';
 
-export function getContent() {
+export function useTestimonialsContent() {
   const { t } = useTranslation();
   
   return [

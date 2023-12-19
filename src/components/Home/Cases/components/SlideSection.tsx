@@ -1,12 +1,12 @@
 import getId from 'helpers/generateUniqueID'
 
 import { motion } from 'framer-motion'
-import { LegacyRef, useRef, useState } from 'react'
+import { useState } from 'react'
 import { useTranslation } from 'src/hooks/useTranslation'
 import Slider from 'react-slick'
 
 import styles from '../cases.module.scss'
-import { getContent as content } from '../Content'
+import { useCasesContent } from '../Content'
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -15,11 +15,11 @@ import Title from 'components/Title'
 import { useResponsivity } from 'src/hooks/useResponsivity'
 
 const SlideSection = () => {
-	const { slides } = content()
+	const { slides } = useCasesContent()
 	const { t } = useTranslation()
 	const { isMobile } = useResponsivity()
 	const [currentSlide, setCurrentSlide] = useState(0)
-	const [casesSliderRef, setCasesSliderRef] = useState(null)
+	const [casesSliderRef, setCasesSliderRef] = useState<Slider | null>(null)
 
 	return (
 		<div className={styles['cases-slider']}>
@@ -72,6 +72,7 @@ const SlideSection = () => {
 
 					<div className={styles.arrows}>
 						<button
+							// @ts-ignore
 							onClick={() => casesSliderRef.slickPrev()}
 							className={styles['arrow-prev']}
 						>
@@ -79,6 +80,7 @@ const SlideSection = () => {
 						</button>
 
 						<button
+							// @ts-ignore
 							onClick={() => casesSliderRef.slickNext()}
 							className={styles['arrow-next']}
 						>
@@ -110,14 +112,13 @@ const SlideSection = () => {
 					return (
 						<motion.div
 							key={`banner-${getId()}`}
-							className={`${styles.image} ${
-								isCurrentSlide ? styles.active : ''
-							}`}
-							// animation
 							initial="hidden"
 							animate={isCurrentSlide ? 'visible' : 'hidden'}
 							variants={{ visible: { opacity: 1 }, hidden: { opacity: 0 } }}
 							transition={{ type: 'spring', duration: 1 }}
+							className={`${styles.image} ${
+								isCurrentSlide ? styles.active : ''
+							}`}
 						>
 							<Image
 								src={slide.banner}

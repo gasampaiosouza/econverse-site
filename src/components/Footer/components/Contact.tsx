@@ -25,6 +25,11 @@ type IFormInfo = {
 	message: { value: string; error: boolean }
 }
 
+type IFormValidations = {
+  email: RegExp
+  phone: RegExp
+}
+
 type IBlur = FocusEvent<HTMLInputElement | HTMLTextAreaElement>
 
 const Contact = () => {
@@ -33,19 +38,23 @@ const Contact = () => {
 	const [formInfo, setFormInfo] = useState<IFormInfo>({} as IFormInfo)
 
 	const handleFormBlur = ({ target }: IBlur, id: keyof IFormInfo) => {
-		const validations = { email: patterns.email, phone: patterns.phone }
+		const validations: IFormValidations = {
+			email: patterns.email,
+			phone: patterns.phone,
+		}
+	
 		const value = target.value
-
-		if (validations[id]) {
+	
+		if (id !== 'name' && id !== 'message' && validations[id]) {
 			const regex = validations[id]
-
+	
 			if (!regex.test(value)) {
 				setFormInfo((prev) => ({ ...prev, [id]: { value, error: true } }))
 				return
 			}
 		}
-
-		return setFormInfo((prev) => ({ ...prev, [id]: { value, error: false } }))
+	
+		setFormInfo((prev) => ({ ...prev, [id]: { value, error: false } }))
 	}
 
 	const handleSubmit = async (event: FormEvent) => {
@@ -55,7 +64,7 @@ const Contact = () => {
 			.map(([_, entry]) => entry.error)
 			.some(Boolean)
 
-			console.log({ has_error })
+		console.log({ has_error })
 
 		if (has_error) return
 

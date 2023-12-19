@@ -1,6 +1,6 @@
 import { useTranslation } from '~/src/hooks/useTranslation'
 
-export function footerContent() {
+export function useFooterContent() {
 	const { t } = useTranslation()
 
 	return {
