@@ -1,4 +1,4 @@
-### Econverse Official Website 🌐
+### Econverse Unofficial Website 🌐
 
 This repository contains the former official website of Econverse, serving as an institutional and informative platform.
 
